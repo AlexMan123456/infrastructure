@@ -14,13 +14,13 @@ locals {
     "utility" = {
       description        = "Helpful utility functions."
       visibility         = "public"
-      required_ci_checks = ["ci/pnpm-ci"]
+      required_ci_checks = ["ci / pnpm-ci"]
     }
 
     "eslint-plugin" = {
       description        = "A package to provide custom ESLint rules and configs."
       visibility         = "public"
-      required_ci_checks = ["ci/pnpm-ci"]
+      required_ci_checks = ["ci / pnpm-ci"]
     }
   }
 }

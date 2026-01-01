@@ -46,6 +46,12 @@ locals {
       visibility         = "public"
       required_ci_checks = ["neurosongs-ci"]
     }
+
+    "alex-g-bot-2" = {
+      description        = "Discord moderation bot created in TypeScript."
+      visibility         = "public"
+      required_ci_checks = ["alex-g-bot-ci"]
+    }
   }
 }
 

@@ -1,19 +1,26 @@
 {
   "name": "infrastructure",
   "version": "1.0.0",
-  "description": "",
+  "description": "Infrastructure for my GitHub repositories.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
+    "lint-package-json": "eslint package.json",
     "prepare": "husky",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "update-dependencies": "pnpm update --latest && pnpm update"
   },
-  "keywords": [],
-  "author": "",
+  "author": "alextheman",
   "license": "ISC",
   "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a",
   "devDependencies": {
+    "@alextheman/eslint-plugin": "^5.4.2",
     "dotenv-cli": "^11.0.0",
+    "eslint": "^9.39.2",
     "husky": "^9.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "unrs-resolver"]
   }
 }

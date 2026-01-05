@@ -5,8 +5,15 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "format": "pnpm run format-package-json && pnpm run format-terraform-fmt && pnpm run format-tflint",
     "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
+    "format-terraform-fmt": "terraform fmt -recursive",
+    "format-tflint": "tflint --fix --recursive",
+    "lint": "pnpm run lint-package-json && pnpm run lint-tflint && pnpm run lint-terraform-fmt && pnpm run lint-terraform-validate",
     "lint-package-json": "eslint package.json",
+    "lint-terraform-fmt": "terraform fmt -check -recursive",
+    "lint-terraform-validate": "terraform validate",
+    "lint-tflint": "tflint --recursive",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update-dependencies": "pnpm update --latest && pnpm update"

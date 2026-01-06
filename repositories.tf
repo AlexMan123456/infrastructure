@@ -8,7 +8,7 @@ locals {
     "infrastructure" = {
       description        = "Infrastructure for my GitHub repositories."
       visibility         = "public"
-      required_ci_checks = ["terraform-ci", "Terraform Cloud/alextheman/repo-id-pmMPm4vxcUqSJvzV"]
+      required_ci_checks = ["terraform-ci", "Terraform Cloud/alextheman/repo-id-pmMPm4vxcUqSJvzV", "actions-ci / actions-ci"]
     }
 
     "utility" = {
@@ -20,19 +20,19 @@ locals {
     "eslint-plugin" = {
       description        = "A package to provide custom ESLint rules and configs."
       visibility         = "public"
-      required_ci_checks = ["ci / pnpm-ci"]
+      required_ci_checks = ["package-ci / pnpm-ci", "actions-ci / actions-ci"]
     }
 
     "components" = {
       description        = "A package containing common React components used across my projects."
       visibility         = "public"
-      required_ci_checks = ["ci / pnpm-ci"]
+      required_ci_checks = ["package-ci / pnpm-ci", "actions-ci / actions-ci"]
     }
 
     "alex-c-line" = {
       description        = "Command-line tool with commands to streamline the developer workflow."
       visibility         = "public"
-      required_ci_checks = ["ci / pnpm-ci"]
+      required_ci_checks = ["package-ci / pnpm-ci", "actions-ci / actions-ci"]
     }
 
     "github-actions" = {
@@ -44,13 +44,13 @@ locals {
     "neurosongs-2" = {
       description        = "New version of my music-sharing app, Neurosongs."
       visibility         = "public"
-      required_ci_checks = ["neurosongs-ci"]
+      required_ci_checks = ["neurosongs-ci", "actions-ci / actions-ci"]
     }
 
     "alex-g-bot-2" = {
       description        = "Discord moderation bot created in TypeScript."
       visibility         = "public"
-      required_ci_checks = ["alex-g-bot-ci"]
+      required_ci_checks = ["alex-g-bot-ci", "actions-ci / actions-ci"]
     }
   }
 }

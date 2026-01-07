@@ -33,6 +33,13 @@ resource "github_repository_ruleset" "default" {
   repository  = github_repository.default.name
   target      = "branch"
   enforcement = "active"
+
+  bypass_actors {
+    actor_type  = "RepositoryRole"
+    actor_id    = "5"
+    bypass_mode = "always"
+  }
+
   conditions {
     ref_name {
       include = ["~DEFAULT_BRANCH"]

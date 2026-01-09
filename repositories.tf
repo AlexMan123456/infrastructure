@@ -65,6 +65,4 @@ module "repository" {
   archived = try(each.value.archived, false)
 
   required_ci_checks = try(each.value.required_ci_checks, [])
-
-  alex_up_bot_github_token = var.alex_up_bot_github_token
 }

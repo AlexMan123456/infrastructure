@@ -19,6 +19,10 @@ resource "github_organization_settings" "default" {
   description                     = "This GitHub organisation is home to all my mainline NPM packages, shared GitHub Actions, Infrastructure, and applications."
   default_repository_permission   = "read"
   members_can_create_repositories = false
+
+  lifecycle {
+    ignore_changes = [billing_email]
+  }
 }
 
 resource "github_actions_organization_secret" "alex_up_bot_github_token" {

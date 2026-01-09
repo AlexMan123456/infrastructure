@@ -14,11 +14,12 @@ data "github_organization" "default" {
 }
 
 resource "github_organization_settings" "default" {
-  billing_email                   = var.billing_email
-  name                            = data.github_organization.default.name
-  description                     = "This GitHub organisation is home to all my mainline NPM packages, shared GitHub Actions, Infrastructure, and applications."
-  default_repository_permission   = "read"
-  members_can_create_repositories = false
+  billing_email                           = var.billing_email
+  name                                    = data.github_organization.default.name
+  description                             = "This GitHub organisation is home to all my mainline NPM packages, shared GitHub Actions, Infrastructure, and applications."
+  default_repository_permission           = "read"
+  members_can_create_public_repositories  = false
+  members_can_create_private_repositories = false
 
   lifecycle {
     ignore_changes = [billing_email]

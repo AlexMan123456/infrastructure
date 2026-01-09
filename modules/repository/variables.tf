@@ -42,8 +42,3 @@ variable "required_ci_checks" {
   default     = []
 }
 
-variable "alex_up_bot_github_token" {
-  description = "Token to provide for Actions bot, AlexUpBot"
-  type        = string
-  sensitive   = true
-}

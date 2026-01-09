@@ -67,9 +67,3 @@ resource "github_repository_ruleset" "default" {
     }
   }
 }
-
-resource "github_actions_secret" "alex_up_bot_github_token" {
-  repository      = github_repository.default.name
-  secret_name     = "ALEX_UP_BOT_GITHUB_TOKEN"
-  plaintext_value = var.alex_up_bot_github_token
-}

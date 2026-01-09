@@ -34,7 +34,22 @@ variable "alex_up_bot_github_token" {
   sensitive   = true
 }
 
+variable "billing_email" {
+  description = "Email associated with the organisation"
+  type        = string
+  validation {
+    condition     = can(regex("@", var.billing_email))
+    error_message = "billing_email must be a valid email address."
+  }
+}
+
 provider "github" {
   token = var.github_token
   owner = var.github_owner
+}
+
+module "github_organisation" {
+  source                   = "./modules/github_organisation"
+  billing_email            = var.billing_email
+  alex_up_bot_github_token = var.alex_up_bot_github_token
 }

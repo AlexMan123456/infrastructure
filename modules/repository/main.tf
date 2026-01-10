@@ -57,7 +57,7 @@ resource "github_repository_ruleset" "default" {
     }
 
     required_status_checks {
-      strict_required_status_checks_policy = true
+      strict_required_status_checks_policy = !var.enable_merge_queue
 
       dynamic "required_check" {
         for_each = distinct(var.required_ci_checks)

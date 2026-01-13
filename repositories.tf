@@ -3,8 +3,8 @@ locals {
     "infrastructure" = {
       description        = "Infrastructure for my GitHub repositories."
       visibility         = "public"
-      required_ci_checks = ["terraform-ci", "actions-ci / actions-ci"]
-      enable_merge_queue = true
+      required_ci_checks = ["terraform-ci", "actions-ci / actions-ci", "Terraform Cloud/alextheman/repo-id-ZkeqqaSSmNywdbav"]
+      enable_merge_queue = false
     }
 
     "utility" = {

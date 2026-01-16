@@ -1,0 +1,11 @@
+resource "github_actions_organization_secret" "alex_up_bot_github_token" {
+  secret_name     = "ALEX_UP_BOT_GITHUB_TOKEN"
+  encrypted_value = var.alex_up_bot_github_token
+  visibility      = "all"
+}
+
+resource "github_actions_organization_secret" "alex_up_bot_private_key" {
+  secret_name     = "ALEX_UP_BOT_PRIVATE_KEY"
+  encrypted_value = var.alex_up_bot_private_key
+  visibility      = "all"
+}

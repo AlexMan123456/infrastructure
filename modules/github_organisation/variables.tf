@@ -13,6 +13,12 @@ variable "alex_up_bot_github_token" {
   sensitive   = true
 }
 
+variable "alex_up_bot_private_key" {
+  description = "Private key for alex-up-bot app, commonly used to create pull requests in GitHub Actions. This is intended to replace alex_up_bot_github_token as that is a PAT and less secure than a GitHub App."
+  type        = string
+  sensitive   = true
+}
+
 variable "webhook_url" {
   description = "The URL of a webhook to receive notifications about my organisation."
   type        = string

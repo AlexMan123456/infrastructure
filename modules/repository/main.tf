@@ -33,18 +33,12 @@ resource "github_repository" "default" {
   }
 }
 
-resource "github_repository_ruleset" "default" {
+resource "github_repository_ruleset" "ci_checks" {
   count       = length(var.required_ci_checks) > 0 ? 1 : 0
-  name        = "Main branch protection"
+  name        = "CI checks to run on main"
   repository  = github_repository.default.name
   target      = "branch"
   enforcement = "active"
-
-  bypass_actors {
-    actor_type  = "RepositoryRole"
-    actor_id    = "5"
-    bypass_mode = "always"
-  }
 
   conditions {
     ref_name {
@@ -54,10 +48,6 @@ resource "github_repository_ruleset" "default" {
   }
 
   rules {
-    pull_request {
-      required_approving_review_count = 0
-    }
-
     required_status_checks {
       strict_required_status_checks_policy = !var.enable_merge_queue
 
@@ -74,6 +64,32 @@ resource "github_repository_ruleset" "default" {
       content {
         merge_method = "MERGE"
       }
+    }
+  }
+}
+
+resource "github_repository_ruleset" "pull_request_reviews" {
+  name        = "Pull request review conditions (bypassable by admins)"
+  repository  = github_repository.default.name
+  target      = "branch"
+  enforcement = "active"
+
+  bypass_actors {
+    actor_type  = "OrganizationAdmin"
+    actor_id    = 1
+    bypass_mode = "pull_request"
+  }
+
+  conditions {
+    ref_name {
+      include = ["~DEFAULT_BRANCH"]
+      exclude = []
+    }
+  }
+
+  rules {
+    pull_request {
+      required_approving_review_count = 1
     }
   }
 }

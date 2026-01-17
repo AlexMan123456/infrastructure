@@ -42,7 +42,6 @@ resource "github_repository_ruleset" "ci_checks" {
 
   bypass_actors {
     actor_type  = "OrganizationAdmin"
-    actor_id    = "1"
     bypass_mode = "pull_request"
   }
 
@@ -82,7 +81,6 @@ resource "github_repository_ruleset" "pull_request_conditions" {
 
   bypass_actors {
     actor_type  = "OrganizationAdmin"
-    actor_id    = "1"
     bypass_mode = "exempt"
   }
 

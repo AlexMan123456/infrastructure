@@ -100,7 +100,7 @@ resource "github_repository_ruleset" "pull_request_reviews" {
   }
 }
 
-resource "github_repository_ruleset" "no_version_tags" {
+resource "github_repository_ruleset" "restrict_version_tags" {
   name        = "Restriction against creating version tags (bypassable by alex-up-bot)"
   repository  = github_repository.default.name
   target      = "tag"

@@ -96,6 +96,7 @@ resource "github_repository_ruleset" "pull_request_reviews" {
   rules {
     pull_request {
       required_approving_review_count = 1
+      dismiss_stale_reviews_on_push   = true
     }
   }
 }

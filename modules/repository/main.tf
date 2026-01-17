@@ -42,7 +42,7 @@ resource "github_repository_ruleset" "ci_checks" {
 
   bypass_actors {
     actor_type  = "OrganizationAdmin"
-    actor_id    = 1
+    actor_id    = "1"
     bypass_mode = "pull_request"
   }
 
@@ -97,6 +97,7 @@ resource "github_repository_ruleset" "pull_request_reviews" {
     pull_request {
       required_approving_review_count = 1
       dismiss_stale_reviews_on_push   = true
+      allowed_merge_methods           = ["merge", "rebase"]
     }
   }
 }

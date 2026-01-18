@@ -12,8 +12,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2(a730ff68d8b74f7d3cba51518fc6f09f)
       alex-c-line:
-        specifier: ^1.18.0
-        version: 1.18.0
+        specifier: ^1.18.2
+        version: 1.18.2
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
@@ -810,8 +810,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.18.0:
-    resolution: {integrity: sha512-jP01TvTVxkjapbQxcp953qLfLTvQ4SHFWvAjOTXjms8Dsmks0QNVRyBUKqDUoM0Qe6PRIYmW1pubWV3hHdVakA==}
+  alex-c-line@1.18.2:
+    resolution: {integrity: sha512-VT6NgdVDEzsoPoJtO5lQ9XvLhXpVNUpcYkqyEGu0fXfvPu13bK1NGKvchrKxTPXfnXXjQ3cCMpbig4h5uxn/dg==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -3081,8 +3081,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.52.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.53.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.53.0
+      '@typescript-eslint/tsconfig-utils': 8.52.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.52.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -3304,7 +3304,7 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.18.0:
+  alex-c-line@1.18.2:
     dependencies:
       '@alextheman/utility': 4.7.0
       commander: 14.0.2

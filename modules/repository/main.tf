@@ -51,7 +51,7 @@ resource "github_repository_ruleset" "ci_checks" {
       exclude = []
     }
   }
-
+  #
   rules {
     required_status_checks {
       strict_required_status_checks_policy = true

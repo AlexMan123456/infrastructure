@@ -107,6 +107,7 @@ resource "github_repository_ruleset" "pull_request_conditions" {
 
   rules {
     pull_request {
+      allowed_merge_methods           = ["merge", "rebase"]
       required_approving_review_count = 1
       dismiss_stale_reviews_on_push   = true
       require_code_owner_review       = true

@@ -48,7 +48,7 @@ resource "github_repository_ruleset" "ci_checks" {
   conditions {
     ref_name {
       include = ["~DEFAULT_BRANCH"]
-      exclude = ["alex-up-bot/change-*-version"]
+      exclude = ["alex-up-bot/change-major-version", "alex-up-bot/change-minor-version", "alex-up-bot/change-patch-version"]
     }
   }
 

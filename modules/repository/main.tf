@@ -33,8 +33,28 @@ resource "github_repository" "default" {
   }
 }
 
+resource "github_repository_ruleset" "linear_history" {
+  count       = !var.archived ? 1 : 0
+  name        = "Require linear history on all branches"
+  repository  = github_repository.default.name
+  target      = "branch"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["~ALL"]
+      exclude = ["~DEFAULT_BRANCH"]
+    }
+  }
+
+  rules {
+    required_linear_history = true
+    non_fast_forward        = false # Allow force-pushes
+  }
+}
+
 resource "github_repository_ruleset" "ci_checks" {
-  count       = length(var.required_ci_checks) > 0 ? 1 : 0
+  count       = length(var.required_ci_checks) > 0 && !var.archived ? 1 : 0
   name        = "CI checks to run on main"
   repository  = github_repository.default.name
   target      = "branch"
@@ -54,7 +74,7 @@ resource "github_repository_ruleset" "ci_checks" {
 
   rules {
     required_status_checks {
-      strict_required_status_checks_policy = !var.enable_merge_queue
+      strict_required_status_checks_policy = true
 
       dynamic "required_check" {
         for_each = distinct(var.required_ci_checks)
@@ -63,17 +83,11 @@ resource "github_repository_ruleset" "ci_checks" {
         }
       }
     }
-
-    dynamic "merge_queue" {
-      for_each = var.enable_merge_queue ? [1] : []
-      content {
-        merge_method = "MERGE"
-      }
-    }
   }
 }
 
 resource "github_repository_ruleset" "pull_request_conditions" {
+  count       = !var.archived ? 1 : 0
   name        = "Pull request conditions (bypassable by admins)"
   repository  = github_repository.default.name
   target      = "branch"
@@ -93,6 +107,7 @@ resource "github_repository_ruleset" "pull_request_conditions" {
 
   rules {
     pull_request {
+      allowed_merge_methods           = ["merge", "rebase"]
       required_approving_review_count = 1
       dismiss_stale_reviews_on_push   = true
       require_code_owner_review       = true
@@ -101,6 +116,7 @@ resource "github_repository_ruleset" "pull_request_conditions" {
 }
 
 resource "github_repository_ruleset" "restrict_version_tags" {
+  count       = !var.archived ? 1 : 0
   name        = "Restriction against creating version tags (bypassable by alex-up-bot)"
   repository  = github_repository.default.name
   target      = "tag"

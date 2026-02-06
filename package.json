@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "exit 0",
     "format": "pnpm run format-package-json && pnpm run format-prettier-yml && pnpm run format-terraform-fmt && pnpm run format-tflint",
     "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
     "format-prettier-yml": "prettier --write \"./**/*.{yml,yaml}\"",
